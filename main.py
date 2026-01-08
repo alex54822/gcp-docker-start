@@ -22,7 +22,7 @@ def index():
         db_version = cur.fetchone()
         cur.close()
         conn.close()
-        return f"<h1>Успех! 🚀</h1><p>Python подключился к базе данных:</p><p>{db_version}</p>"
+        return f"<h1>CI/CD настроен! 🎉</h1><p>Я больше не захожу на сервер руками!</p><p>{db_version}</p>"
     except Exception as e:
         return f"<h1>Ошибка :(</h1><p>{e}</p>"
 
