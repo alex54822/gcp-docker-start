@@ -16,8 +16,8 @@ services:
       - backend_net
 
   app:
-    build: .             # <--- ВАЖНО: Собираем из Dockerfile
-    env_file: .env       # <--- ВАЖНО: Читаем пароли
+    build: .
+    env_file: .env
     depends_on:
       db:
         condition: service_healthy
@@ -27,9 +27,12 @@ services:
   nginx:
     image: nginx:1.25-alpine
     ports:
-      - "80:80"
+      - "80:80"   
+      - "443:443"   
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     depends_on:
       - app
     networks:
